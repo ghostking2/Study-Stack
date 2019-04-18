@@ -33,12 +33,7 @@ public class DisruptorDemo implements IService {
         final String userId = snowFlake.id();
 
         System.out.println("\r\n==================> starting <==================\r\n");
-        Thread.sleep(800);
-
-        log.error("error");
-        log.warn("warn");
-        log.info("info");
-        log.debug("debug");
+        Thread.sleep(500);
 
         while (true) {
             long start = currentTimeMillis();
