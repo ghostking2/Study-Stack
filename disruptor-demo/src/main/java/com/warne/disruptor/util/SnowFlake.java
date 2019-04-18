@@ -1,10 +1,9 @@
 /*
  *
- *  *   @copyright      Copyright© 2018. 贵阳天德信链科技有限公司 All rights reserved.
- *  *   @project        tdchain-boot-common
- *  *   @file           IdGen
+ *  *   @project        disruptor-demo
+ *  *   @file           SnowFlake
  *  *   @author         warne
- *  *   @date           18-9-10 下午3:23
+ *  *   @date           19-4-18 下午2:59
  *
  */
 

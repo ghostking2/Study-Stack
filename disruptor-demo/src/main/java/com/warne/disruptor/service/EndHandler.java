@@ -1,3 +1,12 @@
+/*
+ *
+ *  *   @project        disruptor-demo
+ *  *   @file           EndHandler
+ *  *   @author         warne
+ *  *   @date           19-4-18 下午2:59
+ *
+ */
+
 package com.warne.disruptor.service;
 
 import com.lmax.disruptor.EventHandler;

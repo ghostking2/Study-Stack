@@ -1,3 +1,12 @@
+/*
+ *
+ *  *   @project        disruptor-demo
+ *  *   @file           ApplicationConfig
+ *  *   @author         warne
+ *  *   @date           19-4-18 下午2:59
+ *
+ */
+
 package com.warne.disruptor.config;
 
 import com.warne.disruptor.mongodb.MongoTools;
