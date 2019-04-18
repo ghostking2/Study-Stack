@@ -11,7 +11,9 @@ package com.warne.disruptor.service;
 
 import com.google.common.collect.Lists;
 import com.lmax.disruptor.EventHandler;
+import com.warne.disruptor.DisruptorDemo;
 import com.warne.disruptor.bean.OrderInfoEvent;
+import com.warne.disruptor.util.EmailUtil;
 import org.bson.Document;
 
 import java.util.List;
@@ -24,25 +26,22 @@ import java.util.List;
 
 public class EmailHandler implements IService, EventHandler<OrderInfoEvent> {
 
-    List<Document> orderInfoList = Lists.newLinkedList();
+    public static List<Document> eamilInfoList = Lists.newLinkedList();
 
     @Override
     public void onEvent(OrderInfoEvent event, long sequence, boolean endOfBatch) {
         if (event == null)
             throw new RuntimeException("event info is empty ");
 
-        orderInfoList.add(event.getValue());
+        eamilInfoList.add(event.getValue());
 
-        if (orderInfoList.size() >= 100000) {
-            for (Document info : orderInfoList) {
-                String toMail = info.getString("to");
-                String mailContent = info.getString("content");
-
-                sendEmail(toMail, mailContent);
-            }
-
-            orderInfoList = Lists.newLinkedList();
+        if (eamilInfoList.size() >= 100000) {
+            EmailUtil.sendEmail(eamilInfoList);
+            eamilInfoList = Lists.newLinkedList();
         }
+
+        DisruptorDemo.COUNT.getAndIncrement();
+        DisruptorDemo.MESSAGE_SUM.getAndIncrement();
     }
 
     /**

@@ -24,18 +24,16 @@ import java.util.List;
  */
 
 public class OrderInfoHandler implements IService, EventHandler<OrderInfoEvent> {
-
     final static Integer BATCH_SIZE = 100_0000;
 
-    List<Document> orderInfoList = Lists.newLinkedList();
-
+    public static List<Document> orderInfoList = Lists.newLinkedList();
 
     @Override
-    public void onEvent(OrderInfoEvent event, long sequence, boolean endOfBatch) {
+    public void onEvent(OrderInfoEvent event, long sequence, boolean endOfBatch) throws Exception {
         if (event == null)
             throw new RuntimeException("event is empty ");
 
-        //# todo 业务处理 保存订单
+        //# 业务处理 保存订单
         Document orderInfo = event.getValue();
         if (orderInfo == null)
             throw new RuntimeException("order info is empty ");
@@ -46,7 +44,6 @@ public class OrderInfoHandler implements IService, EventHandler<OrderInfoEvent> 
         if (orderInfoList.size() >= BATCH_SIZE) {
             MongoHelper.save(orderInfoList);
             orderInfoList = Lists.newLinkedList();
-            return;
         }
     }
 

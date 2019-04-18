@@ -34,7 +34,9 @@ public class OrderModuleQueue extends BaseQueue<Document, OrderInfoEvent> implem
             throw new RuntimeException("disruptor is empty, it is not going to work !");
         }
 
-        //# 先执行完order操作，然后在发送邮件通知，整体算一次操作
-        disruptor.handleEventsWith(new OrderInfoHandler()).then(new EmailHandler()).then(new EndHandler());
+        //# 先执行完order操作，然后在发送邮件通知，整体算一次操作,即为一个消息
+        disruptor.handleEventsWith(new OrderInfoHandler()).then(new EmailHandler());
+
+        //disruptor.handleEventsWith(new OrderInfoHandler());
     }
 }
