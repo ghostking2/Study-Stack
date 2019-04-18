@@ -9,7 +9,6 @@
 
 package com.warne.disruptor.config;
 
-import com.warne.disruptor.mongodb.MongoTools;
 import com.warne.disruptor.service.OrderModuleQueue;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -27,26 +26,20 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @Configuration
 @ComponentScan(basePackages = "com.warne.*")
 public class ApplicationConfig implements ApplicationContextAware {
-
     private ApplicationContext applicationContext;
-
-    @Bean
-    static OrderModuleQueue orderInfoQueue() {
-        return new OrderModuleQueue();
-    }
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
 
     @Bean
-    static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
+    static OrderModuleQueue orderInfoQueue() {
+        return new OrderModuleQueue();
     }
 
     @Bean
-    static MongoTools mongoTools() {
-        return new MongoTools();
+    static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
     }
 
     /**

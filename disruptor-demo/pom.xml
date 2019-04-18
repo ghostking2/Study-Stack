@@ -17,10 +17,11 @@
         <groupId>com.warne.stack</groupId>
         <artifactId>Study-Stack</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath />
+        <relativePath>../../Study-Stack</relativePath>
     </parent>
 
     <artifactId>disruptor-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <name>Study-Stack/disruptor-demo</name>
 
     <dependencies>
@@ -79,7 +80,29 @@
             <version>3.2.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <goals>
+                    <goal>compile</goal>
+                </goals>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

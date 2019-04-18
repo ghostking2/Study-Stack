@@ -65,6 +65,7 @@ public class DisruptorDemo implements IService {
                     COUNT.getAndSet(0);
                     break; //# 继续下一个时间间隔
                 }
+
             }
         }
     }

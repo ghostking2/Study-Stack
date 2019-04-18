@@ -41,10 +41,6 @@ public class SnowFlake {
 
     private final static long twepoch = 1452866247339L;
 
-    public void setWorkerId(long workerId) {
-        this.workerId = workerId;
-    }
-
     public SnowFlake() {
         if (workerId > maxWorkerId || workerId < 0) {
             throw new IllegalArgumentException(

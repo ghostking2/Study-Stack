@@ -15,8 +15,6 @@ import com.warne.disruptor.bean.OrderInfoEvent;
 import org.bson.Document;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * function：description
@@ -26,7 +24,6 @@ import java.util.concurrent.Executors;
 
 public class EmailHandler implements IService, EventHandler<OrderInfoEvent> {
 
-    ExecutorService executorService = Executors.newCachedThreadPool();
     List<Document> orderInfoList = Lists.newLinkedList();
 
     @Override

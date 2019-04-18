@@ -19,11 +19,11 @@
            stdout将日志信息输出到控制上，为方便开发测试使用
     -->
     <contextName>disruptor</contextName>
-    <property name="LOG_HOME" value="./logs" />
+    <property name="LOG_HOME" value="logs" />
     <!--设置系统日志目录-->
     <property name="APP_NAME" value="disruptor" />
 
-    <property name="LOG_LEVEL" value="debug" />
+    <property name="LOG_LEVEL" value="info" />
 
     <!-- 日志记录器，日期滚动记录 -->
     <appender name="FILEERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">

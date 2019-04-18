@@ -12,7 +12,7 @@ package com.warne.disruptor.service;
 import com.google.common.collect.Lists;
 import com.lmax.disruptor.EventHandler;
 import com.warne.disruptor.bean.OrderInfoEvent;
-import com.warne.disruptor.mongodb.MongoTools;
+import com.warne.disruptor.mongodb.MongoHelper;
 import org.bson.Document;
 
 import java.util.List;
@@ -44,7 +44,7 @@ public class OrderInfoHandler implements IService, EventHandler<OrderInfoEvent> 
 
         //# 批量提交数据
         if (orderInfoList.size() >= BATCH_SIZE) {
-            MongoTools.save(orderInfoList);
+            MongoHelper.save(orderInfoList);
             orderInfoList = Lists.newLinkedList();
             return;
         }

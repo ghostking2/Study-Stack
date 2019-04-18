@@ -19,6 +19,8 @@ import com.lmax.disruptor.YieldingWaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 import com.warne.disruptor.bean.ValueWrapper;
+import com.warne.disruptor.mongodb.MongoFactory;
+import org.bson.Document;
 import org.springframework.beans.factory.InitializingBean;
 
 import java.util.List;
@@ -156,5 +158,12 @@ public abstract class BaseQueue<Data, Event extends ValueWrapper<Data>> implemen
 
     public void afterPropertiesSet() {
         this.init();
+
+        //# connection mongodb
+        MongoFactory
+                .database()
+                .getCollection("init")
+                .insertOne(new Document("into", "this is a unusable collection, please ignore it."));
+
     }
 }

@@ -14,7 +14,9 @@ import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import com.mongodb.WriteConcern;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -38,15 +40,21 @@ public class MongoFactory {
         return Singleton.INSTANCE.mongoClient();
     }
 
+    public static MongoCollection collection(String collectionName) {
+        if (StringUtils.isBlank(collectionName)) {
+            throw new RuntimeException("collectionName is empty!");
+        }
+        return database().getCollection(collectionName);
+    }
+
     public static MongoDatabase database() {
-        return Singleton.INSTANCE.database();
+        return mongoClient().getDatabase(dbName);
     }
 
     enum Singleton {
         INSTANCE;
 
         MongoClient singletonMongoClient;
-        MongoDatabase singletonMongoDatabase;
 
         Singleton() {
             build();
@@ -56,47 +64,40 @@ public class MongoFactory {
             return singletonMongoClient;
         }
 
-        public MongoDatabase database() {
-            return singletonMongoDatabase;
-        }
-
         private void build() {
             MongoClientOptions options = MongoClientOptions.builder()
                     .writeConcern(WriteConcern.ACKNOWLEDGED)
                     .socketTimeout(0)
                     .connectionsPerHost(600)
-                    .socketKeepAlive(true)
                     .threadsAllowedToBlockForConnectionMultiplier(500)
                     .connectTimeout(6000).build();
             MongoCredential credential = MongoCredential.createCredential(username, "admin", password.toCharArray());
 
             singletonMongoClient = new MongoClient(new ServerAddress(host), credential, options);
-            singletonMongoDatabase = singletonMongoClient.getDatabase(dbName);
         }
     }
 
-
-    @Value("${mongodb.host}")
+    @Value("${mongodb.host:127.0.0.1}")
     public void setHost(String host) {
         MongoFactory.host = host;
     }
 
-    @Value("${mongodb.port}")
+    @Value("${mongodb.port:27017}")
     public void setPort(int port) {
         MongoFactory.port = port;
     }
 
-    @Value("${mongodb.username}")
+    @Value("${mongodb.username:root}")
     public void setUsername(String username) {
         MongoFactory.username = username;
     }
 
-    @Value("${mongodb.password}")
+    @Value("${mongodb.password:123456}")
     public void setPassword(String password) {
         MongoFactory.password = password;
     }
 
-    @Value("${mongodb.name}")
+    @Value("${mongodb.name:disruptor-demo}")
     public void setDbName(String dbName) {
         MongoFactory.dbName = dbName;
     }
