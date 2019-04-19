@@ -35,12 +35,11 @@ import static java.lang.System.currentTimeMillis;
 public class DisruptorDemo implements IService {
 
     static SnowFlake snowFlake = new SnowFlake();
-    static int seconds = 1;
-    static long perSeconds = seconds * 1000;
+    static int perSeconds = 1 * 1000;
     public final static AtomicLong COUNT = new AtomicLong(1);
     public final static AtomicLong MESSAGE_SUM = new AtomicLong(1);
 
-    public static int loop = 20;
+    public static int loop = 50;
 
     public static void main(String[] args) throws Exception {
         ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
