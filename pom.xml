@@ -36,6 +36,7 @@
             </activation>
             <modules>
                 <module>disruptor-demo</module>
+                <module>ECC-demo</module>
             </modules>
         </profile>
     </profiles>
