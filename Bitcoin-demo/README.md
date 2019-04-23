@@ -16,7 +16,7 @@
 
 
 ---
-#### 比特币地址区分
+#### 比特币地址类型
 ##### 开头是m或n字母的是测试环境的地址（币没有真正价值）
 ##### 开头是数字的是正式环境的地址（币有真正价值！！！）
 
@@ -25,7 +25,7 @@
 |Bitcoin Address | 0x00  | 1开头  |  比特币正式地址 |  
 |Pay-to-Script-Hash Address| 0x05 |  3开头  |  比特币正式地址 |  
 |Bitcoin Testnet Address| 0x6F |  m或n开头  |  比特币测试环境地址 |  
-|Private Key WIF| 0x80 |  5, K or L  |   比特币地址 |  Wallet Import Format 私钥格式 |   
+|Private Key WIF| 0x80 |  5, K or L  |   比特币地址 | Wallet Import Format 私钥格式 |   
 |BIP38 Encrypted Private Key| 0x0142 |  6P  |  |   
 |BIP32 Extended Public Key| 0x0488B21E |  xpub  |  |   
 		
