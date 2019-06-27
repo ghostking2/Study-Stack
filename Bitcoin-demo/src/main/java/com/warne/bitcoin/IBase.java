@@ -26,7 +26,7 @@ public class IBase {
 
 
     /**
-     * ### Bitcoin 比特币 wallet 钱包 助记词
+     * ### Bitcoin 比特币 wallet 钱包 助记词 mnemonic
      * #### 创建钱包 create walllet
      * #### 查询余额  query balance
      * #### 恢复钱包  recovery wallet

@@ -37,6 +37,8 @@
             <modules>
                 <module>disruptor-demo</module>
                 <module>ECC-demo</module>
+                <module>Bitcoin-demo</module>
+                <module>Ethereum-demo</module>
             </modules>
         </profile>
     </profiles>
